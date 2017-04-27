@@ -17,4 +17,4 @@ camera [distance]
 - Harrohold camera's maximum distance is 1200
 - By default, the current viewing distance (not max) when you login is 170
 
-![Screenshot](http://imgur.com/a/iRYbW)
+![Screenshot](http://i.imgur.com/LzxGSgm.jpg)
