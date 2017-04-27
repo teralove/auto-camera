@@ -7,7 +7,7 @@ Requires tera-data files from at least 4-25-2017.
 
 
 ## Chat commands:
-| camera [distance] | set distance to override camera's current and maximum distance from player |
+camera [distance]
 ### Examples:
 - "camera 1000"		sets the camera's current and maximum viewing distance to 1000
 - "camera 0"		will revert camera to use regular settings on next respawn (only if OVERRIDE_DEFAULT_SETTINGS is false)
@@ -16,3 +16,5 @@ Requires tera-data files from at least 4-25-2017.
 - Normal camera's maximum distance is 500
 - Harrohold camera's maximum distance is 1200
 - By default, the current viewing distance (not max) when you login is 170
+
+![Screenshot](http://imgur.com/a/iRYbW)
