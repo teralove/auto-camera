@@ -6,12 +6,12 @@
 
 
 ## Chat commands:
-camera [distance]
+!camera [distance]
 ### Examples:
 - "!camera 1000"	sets the camera's current and maximum viewing distance to 1000
 - "!camera 0"		will revert camera to use regular settings on next respawn (only if OVERRIDE_DEFAULT_SETTINGS is false)
 
-Commands are not case-sensitive.
+Command is not case-sensitive.
 
 
 ## Info
