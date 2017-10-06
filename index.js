@@ -28,7 +28,7 @@ module.exports = function CameraDistance(dispatch) {
 	}
 	
 	// code
-    dispatch.hook('S_SPAWN_ME', 1, function(event) {
+	dispatch.hook('S_SPAWN_ME', 1, function(event) {
 		setTimeout(() => {
 			// check on/off and if there is a previous distance set
 			if (enable && lastDistance == 0) { lastDistance = defaultDistance }
