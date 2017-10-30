@@ -4,7 +4,7 @@
 
 module.exports = function CameraDistance(dispatch) {
 
-	let enable = true
+	let enable = false
 	let defaultDistance = 800
 	let lastDistance = 0
 
@@ -13,22 +13,27 @@ module.exports = function CameraDistance(dispatch) {
 		const Command = require('command')
 		const command = Command(dispatch)
 		command.add('camera', (distance) => {
+			if (distance === undefined) {
+                enable = !enable
+                send(`${enable ? '<font color="#56B4E9">enabled</font>' : '<font color="#E69F00">disabled</font>'}<font>.</font>`)
+                return
+            }
 			if (isNaN(distance)) {
-				send(`[camera-distance] : <font color="#FF0000">Invalid argument.</font>`)
+				send(`<font color="#FF0000">Invalid argument.</font>`)
 				return
 			}
 			setCamera(distance)
-			send(`[camera-distance] : Distance set at <font color="#56B4E9">${distance}</font>.`)
+			send(`Distance set at <font color="#56B4E9">${distance}</font><font>.</font>`)
 		})
 		function send(msg) {
-			command.message(`<font color="#FFFFFF">` + msg + `</font>`)
+			command.message(`[camera-distance] : ` + msg)
 		}
 	} catch (e) {
 		console.log(`[ERROR] -- camera-distance module --`)
 	}
 	
 	// code
-	dispatch.hook('S_SPAWN_ME', 1, function(event) {
+    dispatch.hook('S_SPAWN_ME', 1, function(event) {
 		setTimeout(() => {
 			// check on/off and if there is a previous distance set
 			if (enable && lastDistance == 0) { lastDistance = defaultDistance }
