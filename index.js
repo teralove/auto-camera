@@ -2,16 +2,18 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
+const Command = require('command')
+
 module.exports = function CameraDistance(dispatch) {
 
-	let enable = false
+	const command = Command(dispatch)
+
+	let enable = true
 	let defaultDistance = 800
 	let lastDistance = 0
 
 	// command
 	try {
-		const Command = require('command')
-		const command = Command(dispatch)
 		command.add('camera', (distance) => {
 			if (distance === undefined) {
                 enable = !enable
@@ -25,11 +27,13 @@ module.exports = function CameraDistance(dispatch) {
 			setCamera(distance)
 			send(`Distance set at <font color="#56B4E9">${distance}</font><font>.</font>`)
 		})
-		function send(msg) {
-			command.message(`[camera-distance] : ` + msg)
-		}
 	} catch (e) {
 		console.log(`[ERROR] -- camera-distance module --`)
+	}
+
+	// command chat function
+	function send(msg) {
+		command.message(`[camera-distance] : ` + msg)
 	}
 	
 	// code
@@ -45,11 +49,16 @@ module.exports = function CameraDistance(dispatch) {
 	// helper
 	function setCamera(distance) {
 		lastDistance = distance;
-		dispatch.toClient('S_DUNGEON_CAMERA_SET', {
-			enabled: true,
-			default: distance,
-			max: distance
-		})
+		try {
+			dispatch.toClient('S_DUNGEON_CAMERA_SET', {
+				enabled: true,
+				default: distance,
+				max: distance
+			})
+		} catch (e) {
+			enable = false
+			send(`Unmapped protocol : <font color="#FF0000">S_DUNGEON_CAMERA_SET</font><font>. module is now </font><font color="#E69F00">disabled</font><font>.</font>`)
+		}
 	}
 	
 }
