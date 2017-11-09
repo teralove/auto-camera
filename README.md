@@ -15,7 +15,7 @@ tera-proxy module to unlock maximum viewing distance
 
 ## Changelog 
 ### 1.2.0
-- Added Command Dependency
+- Added Command dependency
 - Removed slash support
 ### 1.1.0
 - Changed command to require exclamation prefix '!'
