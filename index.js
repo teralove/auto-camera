@@ -8,7 +8,7 @@ module.exports = function CameraDistance(dispatch) {
 
 	const command = Command(dispatch)
 
-	let enable = true
+	let enable = false
 	let defaultDistance = 800
 	let lastDistance = 0
 
@@ -38,6 +38,7 @@ module.exports = function CameraDistance(dispatch) {
 	
 	// code
     dispatch.hook('S_SPAWN_ME', 1, function(event) {
+		if (!enable) return
 		setTimeout(() => {
 			// check on/off and if there is a previous distance set
 			if (enable && lastDistance == 0) { lastDistance = defaultDistance }
@@ -48,17 +49,12 @@ module.exports = function CameraDistance(dispatch) {
 	
 	// helper
 	function setCamera(distance) {
-		lastDistance = distance;
-		try {
-			dispatch.toClient('S_DUNGEON_CAMERA_SET', {
-				enabled: true,
-				default: distance,
-				max: distance
-			})
-		} catch (e) {
-			enable = false
-			send(`Unmapped protocol : <font color="#FF0000">S_DUNGEON_CAMERA_SET</font><font>. module is now </font><font color="#E69F00">disabled</font><font>.</font>`)
-		}
+		lastDistance = distance
+		dispatch.toClient('S_DUNGEON_CAMERA_SET', {
+			enabled: true,
+			default: distance,
+			max: distance
+		})
 	}
 	
 }
