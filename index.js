@@ -8,7 +8,7 @@ module.exports = function CameraDistance(dispatch) {
 
 	const command = Command(dispatch)
 
-	let enable = false
+	let enable = true
 	let defaultDistance = 800
 	let lastDistance = 0
 
