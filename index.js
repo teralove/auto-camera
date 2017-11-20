@@ -2,6 +2,8 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
+// Version 1.31r01
+
 const DEFAULT_DISTANCE = 800
 
 module.exports = function CameraDistance(dispatch) {
@@ -13,10 +15,9 @@ module.exports = function CameraDistance(dispatch) {
 	dispatch.hook('S_SPAWN_ME', function (event) {
 		if (!enable) return
 		setTimeout(() => {
-			// check on/off and if there is a previous distance set
-			if (enable && lastDistance == 0) { lastDistance = DEFAULT_DISTANCE }
-			// maintain previous distance
-			if (lastDistance != 0) { setCamera(lastDistance) }
+			// check if there is a previous distance set
+			// otherwise, maintain previous distance
+			(lastDistance == 0) ? lastDistance = DEFAULT_DISTANCE : setCamera(lastDistance)
 		}, 1000)
 	})
 
