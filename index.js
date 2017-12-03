@@ -2,29 +2,28 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.31r01
+// Version 1.41 r:00
 
 const DEFAULT_DISTANCE = 800
 
-module.exports = function CameraDistance(dispatch) {
+module.exports = function CameraDistance(d) {
 
 	let enable = true,
 		lastDistance = 0
 
 	// code
-	dispatch.hook('S_SPAWN_ME', function (event) {
+	d.hook('S_SPAWN_ME', () => {
 		if (!enable) return
-		setTimeout(() => {
-			// check if there is a previous distance set
-			// otherwise, maintain previous distance
-			(lastDistance == 0) ? lastDistance = DEFAULT_DISTANCE : setCamera(lastDistance)
-		}, 1000)
+		// check if there is a previous distance set
+		// otherwise, maintain previous distance
+		if (lastDistance == 0) { lastDistance = DEFAULT_DISTANCE }
+		setTimeout(() => { setCamera(lastDistance) }, 1000)
 	})
 
 	// helper
 	function setCamera(distance) {
 		lastDistance = distance
-		dispatch.toClient('S_DUNGEON_CAMERA_SET', {
+		d.toClient('S_DUNGEON_CAMERA_SET', {
 			enabled: true,
 			default: distance,
 			max: distance
@@ -34,7 +33,7 @@ module.exports = function CameraDistance(dispatch) {
 	// command
 	try {
 		const Command = require('command')
-		const command = Command(dispatch)
+		const command = Command(d)
 		command.add('camera', (distance) => {
 			if (distance === undefined) {
 				enable = !enable
