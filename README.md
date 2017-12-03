@@ -17,7 +17,9 @@ tera-proxy module to unlock maximum viewing distance
 - Harrowhold camera maximum distance is 1200
 - By default, the initial viewing distance (not max) when you login is 170
 
-## Changelog 
+## Changelog
+### 1.41
+- Updated code aesthetics
 ### 1.31
 - Updated code
 ### 1.3
