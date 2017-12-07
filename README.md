@@ -6,9 +6,11 @@ tera-proxy module to unlock maximum viewing distance
 
 ## Usage
 ### `camera`
+### `cam`
 - Toggle on/off
 - Default is on
 ### `camera num`
+### `cam num`
 - Set distance at `num`, where `num` is a value between 0 and 99999
 
 ## Info
