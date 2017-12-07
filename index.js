@@ -2,7 +2,7 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.41 r:00
+// Version 1.41 r:01
 
 const DEFAULT_DISTANCE = 800
 
@@ -34,7 +34,7 @@ module.exports = function CameraDistance(d) {
 	try {
 		const Command = require('command')
 		const command = Command(d)
-		command.add('camera', (distance) => {
+		command.add(['camera', 'cam'], (distance) => {
 			if (distance === undefined) {
 				enable = !enable
 				send(`${enable ? '<font color="#56B4E9">enabled</font>' : '<font color="#E69F00">disabled</font>'}<font>.</font>`)
