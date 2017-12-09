@@ -2,7 +2,7 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.41 r:01
+// Version 1.42 r:00
 
 const DEFAULT_DISTANCE = 800
 
@@ -47,11 +47,7 @@ module.exports = function CameraDistance(d) {
 			setCamera(distance)
 			send(`Distance set at <font color="#56B4E9">${distance}</font><font>.</font>`)
 		})
-		function send(msg) {
-			command.message(`[camera-distance] : ` + msg)
-		}
-	} catch (e) {
-		console.log(`[ERROR] -- camera-distance module --`)
-	}
+		function send(msg) { command.message(`[camera-distance] : ` + msg) }
+	} catch (e) { console.log(`[ERROR] -- camera-distance module --`) }
 
 }
