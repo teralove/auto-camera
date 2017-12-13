@@ -2,7 +2,7 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.42 r:00
+// Version 1.43 r:00
 
 const DEFAULT_DISTANCE = 800
 
@@ -35,19 +35,20 @@ module.exports = function CameraDistance(d) {
 		const Command = require('command')
 		const command = Command(d)
 		command.add(['camera', 'cam'], (distance) => {
-			if (distance === undefined) {
+			if (!distance) {
 				enable = !enable
-				send(`${enable ? '<font color="#56B4E9">enabled</font>' : '<font color="#E69F00">disabled</font>'}<font>.</font>`)
-				return
+				send(`${enable ? 'enabled'.clr('56B4E9') : 'disabled'.clr('E69F00')}` + `.`.clr('FFFFFF'))
 			}
-			if (isNaN(distance)) {
-				send(`<font color="#FF0000">Invalid argument.</font>`)
-				return
+			else if (!isNaN(distance)) {
+				setCamera(distance)
+				send(`Distance set at ` + `${distance}`.clr('56B4E9') + `.`.clr('FFFFFF'))
 			}
-			setCamera(distance)
-			send(`Distance set at <font color="#56B4E9">${distance}</font><font>.</font>`)
+			else send(`Invalid argument.`.clr('FF0000'))
 		})
 		function send(msg) { command.message(`[camera-distance] : ` + msg) }
 	} catch (e) { console.log(`[ERROR] -- camera-distance module --`) }
 
 }
+
+// credit : https://github.com/Some-AV-Popo
+String.prototype.clr = function (hexColor) { return `<font color="#${hexColor}">${this}</font>` }
