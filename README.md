@@ -20,6 +20,9 @@ tera-proxy module to unlock maximum viewing distance
 - By default, the initial viewing distance (not max) when you login is 170
 
 ## Changelog
+### 1.43
+- Updated code
+- Added string function
 ### 1.42
 - Updated code aesthetics
 ### 1.41
