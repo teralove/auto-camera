@@ -20,6 +20,8 @@ tera-proxy module to unlock maximum viewing distance
 - By default, the initial viewing distance (not max) when you login is 170
 
 ## Changelog
+### 1.44
+- Updated code aesthetics
 ### 1.43
 - Updated code
 - Added string function
@@ -29,13 +31,13 @@ tera-proxy module to unlock maximum viewing distance
 - Updated code aesthetics
 ### 1.31
 - Updated code
-### 1.3
+### 1.30
 - Updated code
 - Removed protocol version restriction
-### 1.2.0
+### 1.21
 - Added Command dependency
 - Removed slash support
-### 1.2.1
+### 1.20
 - Initial Fork
 ### 1.1.0
 - Changed command to require exclamation prefix '!'
