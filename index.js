@@ -2,7 +2,7 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.43 r:00
+// Version 1.44 r:00
 
 const DEFAULT_DISTANCE = 800
 
@@ -14,7 +14,7 @@ module.exports = function CameraDistance(d) {
 	// code
 	d.hook('S_SPAWN_ME', () => {
 		if (!enable) return
-		// check if there is a previous distance set
+		// check if there is no previous distance set
 		// otherwise, maintain previous distance
 		if (lastDistance == 0) { lastDistance = DEFAULT_DISTANCE }
 		setTimeout(() => { setCamera(lastDistance) }, 1000)
@@ -37,7 +37,7 @@ module.exports = function CameraDistance(d) {
 		command.add(['camera', 'cam'], (distance) => {
 			if (!distance) {
 				enable = !enable
-				send(`${enable ? 'enabled'.clr('56B4E9') : 'disabled'.clr('E69F00')}` + `.`.clr('FFFFFF'))
+				send(`${enable ? 'enabled'.clr('5AFF39') : 'disabled'.clr('E69F00')}` + `.`.clr('FFFFFF'))
 			}
 			else if (!isNaN(distance)) {
 				setCamera(distance)
@@ -45,7 +45,7 @@ module.exports = function CameraDistance(d) {
 			}
 			else send(`Invalid argument.`.clr('FF0000'))
 		})
-		function send(msg) { command.message(`[camera-distance] : ` + msg) }
+		function send(msg) { command.message(`[camera-distance] : ` + [...arguments].join('\n\t - ')) }
 	} catch (e) { console.log(`[ERROR] -- camera-distance module --`) }
 
 }
