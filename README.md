@@ -1,4 +1,4 @@
-# camera-distance
+# auto-camera
 tera-proxy module to unlock maximum viewing distance
 
 ## Dependency
@@ -20,6 +20,8 @@ tera-proxy module to unlock maximum viewing distance
 - By default, the initial viewing distance (not max) when you login is 170
 
 ## Changelog
+### 1.45
+- Updated name and font color
 ### 1.44
 - Updated code aesthetics
 ### 1.43
