@@ -2,13 +2,13 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.44 r:00
+// Version 1.45 r:00
 
 const DEFAULT_DISTANCE = 800
 
-module.exports = function CameraDistance(d) {
+module.exports = function AutoCamera(d) {
 
-	let enable = true,
+	let enable = false,
 		lastDistance = 0
 
 	// code
@@ -16,7 +16,7 @@ module.exports = function CameraDistance(d) {
 		if (!enable) return
 		// check if there is no previous distance set
 		// otherwise, maintain previous distance
-		if (lastDistance == 0) { lastDistance = DEFAULT_DISTANCE }
+		if (lastDistance === 0) { lastDistance = DEFAULT_DISTANCE }
 		setTimeout(() => { setCamera(lastDistance) }, 1000)
 	})
 
@@ -37,7 +37,7 @@ module.exports = function CameraDistance(d) {
 		command.add(['camera', 'cam'], (distance) => {
 			if (!distance) {
 				enable = !enable
-				send(`${enable ? 'enabled'.clr('5AFF39') : 'disabled'.clr('E69F00')}` + `.`.clr('FFFFFF'))
+				send(`${enable ? 'enabled'.clr('56B4E9') : 'disabled'.clr('E69F00')}` + `.`.clr('FFFFFF'))
 			}
 			else if (!isNaN(distance)) {
 				setCamera(distance)
@@ -45,8 +45,8 @@ module.exports = function CameraDistance(d) {
 			}
 			else send(`Invalid argument.`.clr('FF0000'))
 		})
-		function send(msg) { command.message(`[camera-distance] : ` + [...arguments].join('\n\t - ')) }
-	} catch (e) { console.log(`[ERROR] -- camera-distance module --`) }
+		function send(msg) { command.message(`[auto-camera] : ` + [...arguments].join('\n\t - ')) }
+	} catch (e) { console.log(`[ERROR] -- auto-camera module --`) }
 
 }
 
