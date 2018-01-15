@@ -2,7 +2,7 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.45 r:00
+// Version 1.45 r:01
 
 const DEFAULT_DISTANCE = 800
 
