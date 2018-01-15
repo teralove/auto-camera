@@ -5,12 +5,10 @@ tera-proxy module to unlock maximum viewing distance
 - `Command` module
 
 ## Usage
-### `camera`
-### `cam`
+### `camera` · `cam`
 - Toggle on/off
 - Default is on
-### `camera num`
-### `cam num`
+### `camera num` · `cam num`
 - Set distance at `num`, where `num` is a value between 0 and 99999
 
 ## Info
@@ -22,27 +20,32 @@ tera-proxy module to unlock maximum viewing distance
 ## Changelog
 ### 1.45
 - Updated name and font color
-### 1.44
-- Updated code aesthetics
-### 1.43
-- Updated code
-- Added string function
-### 1.42
-- Updated code aesthetics
-### 1.41
-- Updated code aesthetics
-### 1.31
-- Updated code
-### 1.30
-- Updated code
-- Removed protocol version restriction
-### 1.21
-- Added Command dependency
-- Removed slash support
-### 1.20
-- Initial Fork
-### 1.1.0
-- Changed command to require exclamation prefix '!'
-- Added slash support
+<details>
 
+    1.44
+    - Updated code aesthetics
+    1.43
+    - Updated code
+    - Added string function
+    1.42
+    - Updated code aesthetics
+    1.41
+    - Updated code aesthetics
+    1.31
+    - Updated code
+    1.30
+    - Updated code
+    - Removed protocol version restriction
+    1.21
+    - Added Command dependency
+    - Removed slash support
+    1.20
+    - Initial Fork
+    1.1.0
+    - Changed command to require exclamation prefix '!'
+    - Added slash support
+
+</details>
+
+---
 ![Screenshot](http://i.imgur.com/LzxGSgm.jpg)
