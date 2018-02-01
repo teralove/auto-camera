@@ -2,13 +2,13 @@
 // - S_DUNGEON_CAMERA_SET
 // - S_SPAWN_ME
 
-// Version 1.45 r:01
+// Version 1.45 r:02
 
 const DEFAULT_DISTANCE = 800
 
 module.exports = function AutoCamera(d) {
 
-	let enable = false,
+	let enable = true,
 		lastDistance = 0
 
 	// code
@@ -23,11 +23,7 @@ module.exports = function AutoCamera(d) {
 	// helper
 	function setCamera(distance) {
 		lastDistance = distance
-		d.toClient('S_DUNGEON_CAMERA_SET', {
-			enabled: true,
-			default: distance,
-			max: distance
-		})
+		d.toClient('S_DUNGEON_CAMERA_SET', { enabled: true, default: distance, max: distance })
 	}
 
 	// command
@@ -35,10 +31,12 @@ module.exports = function AutoCamera(d) {
 		const Command = require('command')
 		const command = Command(d)
 		command.add(['camera', 'cam'], (distance) => {
+			// toggle
 			if (!distance) {
 				enable = !enable
 				send(`${enable ? 'enabled'.clr('56B4E9') : 'disabled'.clr('E69F00')}` + `.`.clr('FFFFFF'))
 			}
+			// set distance
 			else if (!isNaN(distance)) {
 				setCamera(distance)
 				send(`Distance set at ` + `${distance}`.clr('56B4E9') + `.`.clr('FFFFFF'))
