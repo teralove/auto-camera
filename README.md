@@ -1,28 +1,51 @@
-# Camera Distance
+# auto-camera
+tera-proxy module to unlock maximum viewing distance
 
-- Unlocks the 3rd person camera's maximum viewing distance.
-- If you want the camera to be like the "Harrowhold camera" all of the time, then set the variable OVERRIDE_DEFAULT_SETTINGS to true and DEFAULT_MAX_DISTANCE to 1200. 
-- You can customize the camera's max distance in-game by using the "!camera [distance]" command. 
+## Dependency
+- `Command` module
 
-
-## Chat commands:
-!camera [distance]
-### Examples:
-- "!camera 1000"	sets the camera's current and maximum viewing distance to 1000
-- "!camera 0"		will revert camera to use regular settings on next respawn (only if OVERRIDE_DEFAULT_SETTINGS is false)
-
-Command is not case-sensitive.
-
+## Usage
+### `camera` · `cam`
+- Toggle on/off
+- Default is on
+### `camera num` · `cam num`
+- Set distance at `num`, where `num` is a value between 0 and 99999
 
 ## Info
-- Normal camera's maximum distance is 500
-- Harrohold camera's maximum distance is 1200
-- By default, the current viewing distance (not max) when you login is 170
+- Original author : [teralove](https://github.com/teralove)
+- Normal camera maximum distance is 500
+- Harrowhold camera maximum distance is 1200
+- By default, the initial viewing distance (not max) when you login is 170
 
+## Changelog
+<details>
 
-## Changelog 
-### 1.1.0
-* [+] Changed command to require exclamation prefix '!'
-* [+] Added slash support
+    1.45
+    - Updated name and font color
+    1.44
+    - Updated code aesthetics
+    1.43
+    - Updated code
+    - Added string function
+    1.42
+    - Updated code aesthetics
+    1.41
+    - Updated code aesthetics
+    1.31
+    - Updated code
+    1.30
+    - Updated code
+    - Removed protocol version restriction
+    1.21
+    - Added Command dependency
+    - Removed slash support
+    1.20
+    - Initial Fork
+    1.1.0
+    - Changed command to require exclamation prefix '!'
+    - Added slash support
 
+</details>
+
+---
 ![Screenshot](http://i.imgur.com/LzxGSgm.jpg)
