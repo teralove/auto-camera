@@ -20,6 +20,8 @@ tera-proxy module to unlock maximum viewing distance
 ## Changelog
 <details>
 
+    1.46
+    - Added auto-update support
     1.45
     - Updated name and font color
     1.44
