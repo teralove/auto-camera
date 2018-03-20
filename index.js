@@ -1,21 +1,25 @@
-// OPCODE REQUIRED :
-// - S_DUNGEON_CAMERA_SET
-// - S_SPAWN_ME
+// Version 1.46 r:00
 
-// Version 1.45 r:03
+const Command = require('command')
+const config = require('./config.json')
 
 const DEFAULT_DISTANCE = 800
 
-module.exports = function AutoCamera(d) {
+// credit : https://github.com/Some-AV-Popo
+String.prototype.clr = function (hexColor) { return `<font color="#${hexColor}">${this}</font>` }
 
-	let enable = true,
-		lastDistance = 0
+module.exports = function AutoCamera(d) {
+	const command = Command(d)
+
+	let enable = config.enable
+
+	let lastDistance = 0
 
 	// code
+	// check if there is no previous distance set
+	// otherwise, maintain previous distance
 	d.hook('S_SPAWN_ME', () => {
 		if (!enable) return
-		// check if there is no previous distance set
-		// otherwise, maintain previous distance
 		if (lastDistance === 0) { lastDistance = DEFAULT_DISTANCE }
 		setTimeout(() => { setCamera(lastDistance) }, 1000)
 	})
@@ -27,26 +31,19 @@ module.exports = function AutoCamera(d) {
 	}
 
 	// command
-	try {
-		const Command = require('command')
-		const command = Command(d)
-		command.add(['camera', 'cam'], (distance) => {
-			// toggle
-			if (!distance) {
-				enable = !enable
-				send(`${enable ? 'enabled'.clr('56B4E9') : 'disabled'.clr('E69F00')}` + `.`.clr('FFFFFF'))
-			}
-			// set distance
-			else if (!isNaN(distance)) {
-				setCamera(distance)
-				send(`Distance set at ` + `${distance}`.clr('56B4E9') + `.`.clr('FFFFFF'))
-			}
-			else send(`Invalid argument.`.clr('FF0000'))
-		})
-		function send(msg) { command.message(`[auto-camera] : ` + [...arguments].join('\n\t - ')) }
-	} catch (e) { console.log(`[ERROR] -- auto-camera module --`) }
+	command.add(['camera', 'cam'], (distance) => {
+		// toggle
+		if (!distance) {
+			enable = !enable
+			send(`${enable ? 'Enabled'.clr('56B4E9') : 'Disabled'.clr('E69F00')}`)
+		}
+		// set distance
+		else if (!isNaN(distance)) {
+			setCamera(distance)
+			send(`Distance set at ` + `${distance}`.clr('56B4E9'))
+		}
+		else send(`Invalid argument.`.clr('FF0000'))
+	})
+	function send(msg) { command.message(`[auto-camera] : ` + msg) }
 
 }
-
-// credit : https://github.com/Some-AV-Popo
-String.prototype.clr = function (hexColor) { return `<font color="#${hexColor}">${this}</font>` }
