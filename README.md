@@ -7,12 +7,16 @@ tera-proxy module to unlock maximum viewing distance
 ## Usage
 ### `camera` · `cam`
 - Toggle on/off
-- Default is on
 ### `camera num` · `cam num`
 - Set distance at `num`, where `num` is a value between 0 and 99999
 
-### Exemple
-`camera 1200`
+## Config
+### `enable`
+- Initialize module on/off
+- Default is on
+### `defaultDistance`
+- Initialize camera distance
+- Default distance is 800
 
 ## Info
 - Original author : [teralove](https://github.com/teralove)
@@ -25,7 +29,7 @@ tera-proxy module to unlock maximum viewing distance
 
     1.46
     - Added auto-update support
-    - Add `defaultDistance`on config file (Personal value saved after update)
+    - Added `defaultDistance` on config file
     1.45
     - Updated name and font color
     1.44

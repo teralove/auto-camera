@@ -1,4 +1,4 @@
-// Version 1.46 r:02
+// Version 1.46 r:03
 
 const Command = require('command')
 const config = require('./config.json')
@@ -18,7 +18,7 @@ module.exports = function AutoCamera(d) {
 	// code
 	// check if there is no previous distance set
 	// otherwise, maintain previous distance
-	d.hook('S_SPAWN_ME', () => {
+	d.hook('S_SPAWN_ME', 'raw', () => {
 		if (!enable) return
 		if (lastDistance === 0) { lastDistance = DEFAULT_DISTANCE }
 		setTimeout(() => { setCamera(lastDistance) }, 1000)
