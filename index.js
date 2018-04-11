@@ -1,9 +1,9 @@
-// Version 1.46 r:01
+// Version 1.46 r:02
 
 const Command = require('command')
 const config = require('./config.json')
 
-const DEFAULT_DISTANCE = 800
+const DEFAULT_DISTANCE = config.defaultDistance
 
 // credit : https://github.com/Some-AV-Popo
 String.prototype.clr = function (hexColor) { return `<font color="#${hexColor}">${this}</font>` }
