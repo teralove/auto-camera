@@ -1,4 +1,4 @@
-// Version 1.46 r:04
+// Version 1.46 r:05
 
 const Command = require('command')
 const config = require('./config.json')
@@ -19,9 +19,10 @@ module.exports = function AutoCamera(d) {
 
 	// helper
 	function setCamera(distance) {
+		setDistance = distance
 		d.toClient('S_DUNGEON_CAMERA_SET', { 
 			enabled: true,
-			default: distance,
+			default: setDistance,
 			max: distance
 		})
 	}
@@ -35,9 +36,8 @@ module.exports = function AutoCamera(d) {
 		}
 		// set distance
 		else if (!isNaN(distance)) {
-			setDistance = distance
-			setCamera(setDistance)
-			send(`Distance set at ` + `${setDistance}`.clr('56B4E9'))
+			setCamera(distance)
+			send(`Distance set at ` + `${distance}`.clr('56B4E9'))
 		}
 		else send(`Invalid argument.`.clr('FF0000'))
 	})
