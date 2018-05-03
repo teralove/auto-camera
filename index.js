@@ -1,4 +1,4 @@
-// Version 1.46 r:05
+// Version 1.46 r:06
 
 const Command = require('command')
 const config = require('./config.json')
