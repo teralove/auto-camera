@@ -1,4 +1,4 @@
-// Version 1.46 r:05
+// Version 1.46 r:07
 
 const Command = require('command')
 const config = require('./config.json')
@@ -20,7 +20,7 @@ module.exports = function AutoCamera(d) {
 	// helper
 	function setCamera(distance) {
 		setDistance = distance
-		d.toClient('S_DUNGEON_CAMERA_SET', { 
+		d.send('S_DUNGEON_CAMERA_SET', 1, { 
 			enabled: true,
 			default: setDistance,
 			max: distance
