@@ -1,4 +1,11 @@
 {
-    "servers": ["https://raw.githubusercontent.com/seraphinush-gaming/auto-camera/master/"],
-    "supportUrl": "https://github.com/seraphinush-gaming/auto-camera/issues"
+    "disableAutoUpdate": false,
+	"name": "auto-camera",
+	"author": "teralove",
+	"description": "Unlock maximum viewing distance.",
+	"options": {
+		"niceName": "Auto Camera"
+	},
+    "servers": ["https://raw.githubusercontent.com/teralove/auto-camera/master/"],
+    "supportUrl": "https://github.com/teralove/auto-camera/issues"
 }
